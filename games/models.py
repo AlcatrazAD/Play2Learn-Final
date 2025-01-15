@@ -28,7 +28,7 @@ class GameScore(models.Model):
 
     user_name = models.TextField()
     game = models.TextField(choices=GAME_CHOICES, default=MATH)
-    operation = models.TextField(choices=OPERATIONS, default=ADDITION)
+    operations = models.TextField(choices=OPERATIONS, default=ADDITION)
     max_number = models.IntegerField()
     score = models.IntegerField()
     created = models.DateTimeField(auto_now_add=True)
