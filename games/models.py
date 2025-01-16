@@ -11,24 +11,11 @@ class GameScore(models.Model):
         (ANAGRAM, "Anagram Hunt")
     ]
 
-    MULTIPLICATION = 'x'
-    DIVISION = '/'
-    SUBTRACTION = '-'
-    ADDITION = '+'
-    NONAPPLICABLE = 'n/a'
-
-    OPERATIONS = [
-     (MULTIPLICATION, 'x'),
-     (DIVISION, '/'),
-     (SUBTRACTION,'-'),
-     (ADDITION,'+'),
-     (NONAPPLICABLE,'N/A'),
-    
-    ]
+ 
 
     user_name = models.TextField()
     game = models.TextField(choices=GAME_CHOICES, default=MATH)
-    operations = models.TextField(choices=OPERATIONS, default=ADDITION)
+    operations = models.TextField
     max_number = models.IntegerField()
     score = models.IntegerField()
     created = models.DateTimeField(auto_now_add=True)

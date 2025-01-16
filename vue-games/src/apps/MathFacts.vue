@@ -102,8 +102,8 @@
       </div>
     </div>
   </div>
-  <button @click="recordScore">Record score</button>
-  <div>
+  
+  <div class="container">
     <div>
       <label for="user-name">Username</label>
       <input name="user-name" id="user-name" v-model="userName"/>
@@ -113,13 +113,14 @@
       <input name="score" type="number" id="score" v-model="score"/>
     </div>
     <div>
-      <label for="operations">Operations</label>
-      <input name="operations" id="operations" v-model="operations"/>
+      <label for="operation">Operation</label>
+      <input name="operation" id="operation" v-model="operation"/>
     </div>
     <div>
       <label for="max_number">Max Number</label>
       <input name="max_number" type="number" id="max_number" v-model="maxNumber"/>
     </div>
+    <button @click="recordScore">Record score</button>
   </div>
 </template>
 
@@ -140,7 +141,13 @@ export default {
       score: 0,
       screen: "start",
       maxNumber: 30,
-      Operations: '',
+      operation: "+",
+      operations: {
+        "Addition": "+",
+        "Subtraction": "-",
+        "Multiplication": "x",
+        "Division": "/"
+      },
 
 
       number1: 0,
@@ -180,11 +187,12 @@ export default {
         "user-name": this.userName,
         "score": this.score,
         "maxNumber": this.maxNumber,
+        "operation": this.operation,
         "operations": this.operations,
         "game": "MATH"
       };
 
-      const response = (await this.axios.post("/record-score", data)).data;
+      const response = (await this.axios.post("/record-score/", data)).data;
 
       console.log(response);
 
