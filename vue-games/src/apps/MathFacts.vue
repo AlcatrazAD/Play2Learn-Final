@@ -114,7 +114,7 @@
     </div>
     <div>
       <label for="operations">Operations</label>
-      <input name="operations" id="operations" type="text" v-model="operations"/>
+      <input name="operations" id="operations" v-model="operations"/>
     </div>
     <div>
       <label for="max_number">Max Number</label>
@@ -140,13 +140,9 @@ export default {
       score: 0,
       screen: "start",
       maxNumber: 30,
-      operation: "+",
-      operations: {
-        "Addition": "+",
-        "Subtraction": "-",
-        "Multiplication": "x",
-        "Division": "/"
-      },
+      Operations: '',
+
+
       number1: 0,
       number2: 0,
       userInput: "",
@@ -184,7 +180,7 @@ export default {
         "user-name": this.userName,
         "score": this.score,
         "maxNumber": this.maxNumber,
-        "operations": JSON.stringify(this.operations),
+        "operations": this.operations,
         "game": "MATH"
       };
 
