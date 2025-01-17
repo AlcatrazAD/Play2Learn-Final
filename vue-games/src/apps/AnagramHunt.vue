@@ -73,7 +73,7 @@
       <label for="word-length">Word Length</label>
       <input name="word-length" id="word-length" v-model="wordLength"/>
     </div>
-    <button @onclick="record_score">Record score</button>
+    <button  @click="record_score">Record score</button>
   </div>
 </template>
 

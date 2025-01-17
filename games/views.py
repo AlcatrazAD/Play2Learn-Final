@@ -20,8 +20,8 @@ class GameScoreView(TemplateView):
 
     def get_context_data(self, **kwargs):
      context = super(GameScoreView, self).get_context_data(**kwargs)
-     context['anagram_scores'] = GameScore.objects.filter(game__exact='ANAGRAM').order_by('-score')
-     context['math_scores'] = GameScore.objects.filter(game__exact='MATH').order_by('-score')
+     context['anagram_score'] = GameScore.objects.filter(game__exact='ANAGRAM').order_by('-score')
+     context['math_score'] = GameScore.objects.filter(game__exact='MATH').order_by('-score')
      return context
 
 
@@ -31,10 +31,8 @@ def record_score(request):
     user_name = data["user-name"]
     game = data["games"]
     score = data["score"]
-    operations = data["operations"]
-    max_number = data["max-number"]
-
-    new_score = GameScore(user_name=user_name, game=game, score=score, operations=operations, max_number=max_number)
+    
+    new_score = GameScore(user_name=user_name, game=game, score=score)
     new_score.save()
 
     response = {

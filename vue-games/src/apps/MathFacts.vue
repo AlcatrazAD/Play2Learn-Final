@@ -120,7 +120,7 @@
       <label for="max_number">Max Number</label>
       <input name="max_number" type="number" id="max_number" v-model="maxNumber"/>
     </div>
-    <button @onclick="record_score">Record score</button>
+    <button @click="record_score">Record score</button>
   </div>
 </template>
 
@@ -201,6 +201,7 @@ export default {
       // TODO: when Math Facts finishes, make an Ajax call with axios (this.axios)
       // to record the score on the backend
     }
+    
   },
   computed: {
     correctAnswer() {
