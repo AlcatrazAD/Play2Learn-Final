@@ -60,6 +60,21 @@
       </div>
     </div>
   </div>
+  <div class="container">
+    <div>
+      <label for="user-name">Username</label>
+      <input name="user-name" id="user-name" v-model="userName"/>
+    </div>
+    <div>
+      <label for="score">Score</label>
+      <input name="score" type="number" id="score" v-model="score"/>
+    </div>
+    <div>
+      <label for="word-length">Word Length</label>
+      <input name="word-length" id="word-length" v-model="wordLength"/>
+    </div>
+    <button @onclick="record_score">Record score</button>
+  </div>
 </template>
 
 <style scoped>
@@ -126,7 +141,17 @@ export default {
       this.currentWord = this.anagramList[getRandomInteger(0, this.anagramList.length)];
       this.correctGuesses = [];
     },
-    async recordScore() {
+    async record_score() {
+      const data = {
+        "user-name": this.userName,
+        "score": this.score,
+        "wordLength": this.wordLength,
+        "game": "ANAGRAM"
+      };
+
+      const response = (await this.axios.post("/record-score/", data)).data;
+
+      console.log(response);
       // TODO: when Anagram Hunt finishes, make an Ajax call with axios (this.axios)
       // to record the score on the backend
     }
@@ -141,7 +166,7 @@ export default {
         this.screen = "end";
         this.timeLeft = 60;
         clearInterval(this.interval);
-        this.recordScore(); // calls recordScore
+        this.record_score(); // calls recordScore
       }
     }
   }

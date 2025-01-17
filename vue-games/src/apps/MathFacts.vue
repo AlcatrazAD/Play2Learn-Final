@@ -120,7 +120,7 @@
       <label for="max_number">Max Number</label>
       <input name="max_number" type="number" id="max_number" v-model="maxNumber"/>
     </div>
-    <button @click="recordScore">Record score</button>
+    <button @onclick="record_score">Record score</button>
   </div>
 </template>
 
@@ -181,7 +181,7 @@ export default {
         this.number2 = num2;
       }
     },
-    async recordScore() {
+    async record_score() {
  
       const data = {
         "user-name": this.userName,
@@ -241,7 +241,7 @@ export default {
         clearInterval(this.interval);
         this.timeLeft = 60;
         this.screen = "end";
-        this.recordScore(); // call to record score
+        this.record_score(); // call to record score
       }
     }
   }
