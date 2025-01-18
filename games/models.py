@@ -1,6 +1,8 @@
 from django.db import models
 
 # Create your models here.
+    
+
 class GameScore(models.Model):
 
     MATH = "MATH"
@@ -10,8 +12,6 @@ class GameScore(models.Model):
         (MATH, "Math Facts"),
         (ANAGRAM, "Anagram Hunt")
     ]
-
- 
 
     user_name = models.TextField()
     game = models.TextField(choices=GAME_CHOICES, default=MATH)
