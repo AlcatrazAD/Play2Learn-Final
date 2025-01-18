@@ -40,7 +40,7 @@
             <a class="nav-link" href="{% url 'games:games-scores' %}">Game Scores</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">x</a>
+            <a class="nav-link" href="{% url 'reviews:list' %}">Reviews</a>
           </li><li class="nav-item">
             <a class="nav-link" href="#">x</a>
           </li>
@@ -50,7 +50,7 @@
   </nav>
 </header>
 <main class="m-4 pb-5">
-  {% block main %}<h2></h2>{% endblock %}
+  {% block main %}<h2> </h2>{% endblock %}
   {% endblock %}
 </main>
 <footer class="fixed-bottom bg-light row">

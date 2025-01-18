@@ -3,6 +3,13 @@
 {% block title %}Home{% endblock %}
 {% block main %}
 <h1>Home</h1>
+
+<ul class="list-group list-group-flush mb-3">
+    {% for reviews in home %}
+      <li class="list-group-item">{{ reviews.submission }}</li>
+    {% endfor %}
+  </ul>
+
 {% endblock %}
 
 #need to make sure that this page conects to other non _base_vue
