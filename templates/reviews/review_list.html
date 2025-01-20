@@ -1,11 +1,13 @@
 {% extends "_base.html" %}
 
-{% block title %}Reviews{% endblock %}
+{% block title %} Reviews {% endblock %}
 {% block main %}
-  <h2>Our Reviews</h2>
-  <ul class="list-group list-group-flush mb-3">
-    {% for reviews in review_list %}
-      <li class="list-group-item">{{ reviews.submission }}</li>
-    {% endfor %}
-  </ul>
+<h2>Reviews</h2>
+<ul class="list-group list-group-flush mb-3">
+  {% for review in review_list %}
+    <li class="list-group-item">
+      <a href="{{ review.get_absolute_url }}">{{ review.submission }}>
+      </a>
+    </li> 
+  {% endfor %}
 {% endblock %}
