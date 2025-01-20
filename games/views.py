@@ -37,8 +37,11 @@ def record_score(request):
     user_name = data["user-name"]
     game = data["game"]
     score = data["score"]
+    operation = data["operation"]
+    max_number = data["max-number"]
     
-    new_score = GameScore(user_name=user_name, game=game, score=score)
+
+    new_score = GameScore(user_name=user_name, game=game, score=score, operation=operation, max_number=max_number)
     new_score.save()
 
     response = {

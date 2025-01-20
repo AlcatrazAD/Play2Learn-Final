@@ -109,6 +109,14 @@
       <input name="user-name" id="user-name" v-model="userName"/>
     </div>
     <div>
+      <label for="operation">Operation</label>
+      <input name="operation" id="operation" v-model="operation"/>
+    </div>
+    <div>
+      <label for="max-number">Max Number</label>
+      <input name="max-number" type="number" id="max-number" v-model="maxNumber"/>
+    </div>
+    <div>
       <label for="score">Score</label>
       <input name="score" type="number" id="score" v-model="score"/>
     </div>
@@ -180,6 +188,8 @@ export default {
       const data = {
         "user-name": this.userName,
         "score": this.score,
+        "operation": this.operation,
+        "max-number": this.maxNumber,
         "game": "MATH"
       };
       

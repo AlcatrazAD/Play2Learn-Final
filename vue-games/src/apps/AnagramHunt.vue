@@ -69,10 +69,7 @@
       <label for="score">Score</label>
       <input name="score" type="number" id="score" v-model="score"/>
     </div>
-    <div>
-      <label for="word-length">Word Length</label>
-      <input name="word-length" id="word-length" v-model="wordLength"/>
-    </div>
+    
     <button  @click="record_score">Record score</button>
   </div>
 </template>
@@ -145,7 +142,7 @@ export default {
       const data = {
         "user-name": this.userName,
         "score": this.score,
-        "wordLength": this.wordLength,
+        
         "game": "ANAGRAM"
       };
 

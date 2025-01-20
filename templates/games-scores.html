@@ -6,13 +6,13 @@
 <h2>Math Facts</h2>
 <ol>
  {% for score in math_score %}
-    <li>{{score.score}}: ({{score.user_name}} - {{score.created}})</li>
+    <li>{{score.score}}: ({{score.user_name}} - {{score.created}} | {{score.operation}}|{{score.max_number}})</li>
  {% endfor %}
 </ol>
 <h2>Anagram Hunt</h2>
 <ol>
  {% for score in anagram_score %}
-    <li>{{score.score}}: ({{score.user_name}} - {{score.created}}) </li>
+    <li>{{score.score}}: ({{score.user_name}} - {{score.created}}|{{score.word_char}}) </li>
  {% endfor %}
 </ol>
 {% endblock %}
