@@ -66,6 +66,10 @@
       <input name="user-name" id="user-name" v-model="userName"/>
     </div>
     <div>
+      <label for="max-number">Word Length</label>
+      <input name="max-number" type="number" id="max-number" v-model="wordLength"/>
+    </div>
+    <div>
       <label for="score">Score</label>
       <input name="score" type="number" id="score" v-model="score"/>
     </div>
@@ -142,7 +146,8 @@ export default {
       const data = {
         "user-name": this.userName,
         "score": this.score,
-        
+        "max-number": this.wordLength,
+        "operation": this.currentWord,
         "game": "ANAGRAM"
       };
 
