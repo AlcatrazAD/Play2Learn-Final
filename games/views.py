@@ -1,6 +1,9 @@
 from django.shortcuts import render
+
 import json
+
 from django.http import JsonResponse
+
 from games.models import GameScore
 
 # Create your views here.
@@ -22,17 +25,17 @@ class GameScoreView(TemplateView):
     template_name = "games-scores.html"
 
     def get_context_data(self, **kwargs):
-     context = super(GameScoreView, self).get_context_data(**kwargs)
-     context['anagram_score'] = GameScore.objects.filter(game__exact='ANAGRAM').order_by('-score')
-     context['math_score'] = GameScore.objects.filter(game__exact='MATH').order_by('-score')
-     return context
+        context = super(GameScoreView, self).get_context_data(**kwargs)
+        context['anagram_score'] = GameScore.objects.filter(game__exact='ANAGRAM').order_by('-score')
+        context['math_score'] = GameScore.objects.filter(game__exact='MATH').order_by('-score')
+        return context
 
 
 def record_score(request):
     data = json.loads(request.body)
 
     user_name = data["user-name"]
-    game = data["games"]
+    game = data["game"]
     score = data["score"]
     
     new_score = GameScore(user_name=user_name, game=game, score=score)

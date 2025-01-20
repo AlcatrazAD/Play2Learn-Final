@@ -112,14 +112,6 @@
       <label for="score">Score</label>
       <input name="score" type="number" id="score" v-model="score"/>
     </div>
-    <div>
-      <label for="operation">Operation</label>
-      <input name="operation" id="operation" v-model="operation"/>
-    </div>
-    <div>
-      <label for="max_number">Max Number</label>
-      <input name="max_number" type="number" id="max_number" v-model="maxNumber"/>
-    </div>
     <button @click="record_score">Record score</button>
   </div>
 </template>
@@ -181,17 +173,16 @@ export default {
         this.number2 = num2;
       }
     },
+
+
     async record_score() {
  
       const data = {
         "user-name": this.userName,
         "score": this.score,
-        "maxNumber": this.maxNumber,
-        "operation": this.operation,
-        "operations": this.operations,
         "game": "MATH"
       };
-
+      
       const response = (await this.axios.post("/record-score/", data)).data;
 
       console.log(response);
