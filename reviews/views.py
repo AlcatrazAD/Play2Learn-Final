@@ -2,9 +2,11 @@ from django.views.generic import  CreateView, DetailView, ListView, UpdateView
 
 from .models import Review
 
+from .forms import ReviewForm
+
 class ReviewCreateView(CreateView):
     model = Review
-    fields = ['submission']
+    form_class = ReviewForm
 
 
 
@@ -17,7 +19,7 @@ class ReviewListView(ListView):
 
 class ReviewUpdateView(UpdateView):
     model = Review
-    fields = ['submission']
+    form_class = ReviewForm
 
 
 
