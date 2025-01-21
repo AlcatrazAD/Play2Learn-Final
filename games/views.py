@@ -4,7 +4,8 @@ import json
 
 from django.http import JsonResponse
 
-from games.models import GameScore
+from django.contrib.auth.decorators import login_required
+from games.models import GameScore, Game, Gamed
 
 # Create your views here.
 from django.views.generic import TemplateView
@@ -49,3 +50,26 @@ def record_score(request):
     }
 
     return JsonResponse(response)
+
+
+
+def user_scores(request):
+    game_id = request.GET.get('game_id')  # Get the game ID from the query string
+    if not game_id:
+        return JsonResponse({"error": "game_id is required"}, status=400)
+
+    try:
+        game = Game.objects.get(id=game_id)
+    except Game.DoesNotExist:
+        return JsonResponse({"error": "Game not found"}, status=404)
+
+    scores = Gamed.objects.filter(user=request.user, game=game).order_by('-created_at')
+    scores_data = [{"score": score.score, "created_at": score.created_at} for score in scores]
+
+    return JsonResponse({"game": game.name, "scores": scores_data})
+
+
+def game_list(request):
+    games = Game.objects.all()
+    games_data = [{"id": game.id, "name": game.name} for game in games]
+    return JsonResponse({"games": games_data})

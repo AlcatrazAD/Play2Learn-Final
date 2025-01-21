@@ -6,12 +6,14 @@ from allauth.account.views import PasswordChangeView
 
 from .forms import CustomUserChangeForm
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class CustomPasswordChangeView(PasswordChangeView):
+
+class CustomPasswordChangeView(LoginRequiredMixin, PasswordChangeView):
     success_url = reverse_lazy('my-account')
 
-class MyAccountPageView(UpdateView):
+class MyAccountPageView(LoginRequiredMixin, UpdateView):
     model = get_user_model()
     form_class = CustomUserChangeForm
     template_name = 'account/my_account.html'

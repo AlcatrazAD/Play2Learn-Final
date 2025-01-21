@@ -4,7 +4,12 @@ from .models import Review
 
 from .forms import ReviewForm
 
-class ReviewCreateView(CreateView):
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+
+
+
+class ReviewCreateView(LoginRequiredMixin, CreateView):
     model = Review
     form_class = ReviewForm
 

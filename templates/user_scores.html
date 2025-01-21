@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Scores</title>
+</head>
+<body>
+    <h1>Your Scores</h1>
+    <label for="gameSelect">Select a Game:</label>
+    <select id="gameSelect">
+        <option value="1">Math</option> 
+        <option value="2">Anagram</option>
+    </select>
+    <button id="fetchScores">Load Scores</button>
+    <ul id="scoresList"></ul>
+    <script >
+        document.addEventListener('DOMContentLoaded', () => {
+    const fetchScoresButton = document.getElementById('fetchScores');
+    const gameSelect = document.getElementById('gameSelect');
+    const scoresList = document.getElementById('scoresList');
+
+    fetchScoresButton.addEventListener('click', async () => {
+        const gameId = gameSelect.value;
+
+        try {
+            const response = await fetch(`/scores/?game_id=${gameId}`);
+            const data = await response.json();
+
+            
+            scoresList.innerHTML = '';
+
+            if (data.error) {
+                scoresList.innerHTML = `<li>${data.error}</li>`;
+                return;
+            }
+
+            const scores = data.scores;
+
+            if (scores.length > 0) {
+                scores.forEach(score => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `Score: ${score.score} - ${new Date(score.created_at).toLocaleString()}`;
+                    scoresList.appendChild(listItem);
+                });
+            } else {
+                scoresList.innerHTML = '<li>No scores available for this game.</li>';
+            }
+        } catch (error) {
+            console.error('Error fetching scores:', error);
+        }
+    });
+});
+
+    </script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 from django.urls import path
-
+from .views import user_scores
 from games.views import HomeView, MathFactsView, AnagramHuntView, GameScoreView, record_score, AboutView
 
 app_name = 'games'
@@ -10,4 +10,5 @@ urlpatterns = [
     path('record-score/', record_score, name="record-score"),
     path('games-scores/', GameScoreView.as_view(), name='games-scores'),
     path('about/', AboutView.as_view(), name='about'),
+     path('scores/', user_scores, name='user_scores'),
 ]
