@@ -18,8 +18,15 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    # admin
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path("admin/", admin.site.urls),
+
+    # user
+    path('account/', include('allauth.urls')),
+
+
+    #locals
     path('', include("games.urls")),
     path("reviews/", include("reviews.urls")),
     path('contact/', include('contact.urls')),
