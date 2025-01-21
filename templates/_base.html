@@ -28,7 +28,10 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Log in</a>
+          <a class="nav-link" href="{% url 'account_login' %}">Log in</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'account_signup' %}">Sign up</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{% url 'games:math-facts' %}">Math Facts</a>
@@ -41,9 +44,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'reviews:list' %}">Reviews</a>
-          </li><li class="nav-item">
-            <a class="nav-link" href="#">x</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'account_logout' %}">Log out</a>
+            </li>
         </li>
       </ul>
     </div>
@@ -60,7 +63,7 @@
         <ul class="nav">
           <li class="nav-item"><a class="nav-link" href="{% url 'games:about' %}">About</a></li>
           <li class="nav-item"><a class="nav-link" href="{% url 'contact:app' %}">Contact</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Admin</a></li>
+          <li class="nav-item"><a class="nav-link" href="/admin/">Admin</a></li>
         </ul>
       </nav>
     </div>
