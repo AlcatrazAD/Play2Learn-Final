@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "games.apps.GamesConfig",
     "reviews.apps.ReviewsConfig",
     "users.apps.UsersConfig",
+    "contact.apps.ContactConfig",
     
 ]
 
